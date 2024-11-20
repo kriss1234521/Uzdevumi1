@@ -1,0 +1,2 @@
+# Uzdevumi1
+NLP
