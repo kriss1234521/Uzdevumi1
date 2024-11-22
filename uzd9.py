@@ -1,6 +1,11 @@
-from transformers import pipeline
+import random
 
-generator = pipeline("text-generation", model="gpt2")
-result = generator("Reiz kādā tālā zemē...", max_length=50, num_return_sequences=1)
+starting_phrase = "Reiz kādā tālā zemē..."
+continuations = [
+    "tur dzīvoja maģisks pūķis.",
+    "visi sapņoja par varoņiem.",
+    "un visur bija dīvaini radījumi."
+]
 
-print("Ģenerētais teksts:", result[0]['generated_text'])
+story = starting_phrase + " " + random.choice(continuations)
+print(story)
