@@ -1,11 +1,10 @@
-from transformers import pipeline
+from gensim.summarization import summarize
 
-text = """
-Latvija ir valsts Baltijas reģionā. Tās galvaspilsēta ir Rīga, kas ir slavena ar savu vēsturisko centru un skaistajām ēkām.
-Latvija robežojas ar Lietuvu, Igauniju un Krieviju, kā arī tai ir piekļuve Baltijas jūrai. Tā ir viena no Eiropas Savienības dalībvalstīm.
+article = """
+Latvija ir valsts Baltijas reģionā. Tās galvaspilsēta ir Rīga, kas ir slavena ar savu vēsturisko centru un skaistajām ēkām. 
+Latvija robežojas ar Lietuvu, Igauniju un Krieviju, kā arī tai ir piekļuve Baltijas jūrai. 
+Tā ir viena no Eiropas Savienības dalībvalstīm.
 """
 
-summarizer = pipeline("summarization")
-summary = summarizer(text, max_length=50, min_length=25, do_sample=False)
-
-print("Rezultāts:", summary[0]['summary_text'])
+summary = summarize(article, ratio=0.5)
+print(summary)
