@@ -1,13 +1,16 @@
 from textblob import TextBlob
 
-texts = [
+sentences = [
     "Šis produkts ir lielisks, esmu ļoti apmierināts!",
     "Esmu vīlies, produkts neatbilst aprakstam.",
     "Neitrāls produkts, nekas īpašs."
 ]
 
-print("Noskaņojuma analīze:")
-for text in texts:
-    analysis = TextBlob(text)
-    sentiment = "Pozitīvs" if analysis.polarity > 0 else "Negatīvs" if analysis.polarity < 0 else "Neitrāls"
-    print(f"Teikums: '{text}' - Noskaņojums: {sentiment}")
+for sentence in sentences:
+    polarity = TextBlob(sentence).sentiment.polarity
+    if polarity > 0:
+        print(f"{sentence} - Pozitīvs")
+    elif polarity < 0:
+        print(f"{sentence} - Negatīvs")
+    else:
+        print(f"{sentence} - Neitrāls")
